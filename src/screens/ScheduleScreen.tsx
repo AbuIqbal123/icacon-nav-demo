@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Header } from '../components/Header'
-import { EVENT_DAYS, EVENT_META, scheduleForDay } from '../data/events'
+import { EVENT_DAYS, EVENT_META, LINKS, scheduleForDay } from '../data/events'
 import type { EventDayId, Screen } from '../types'
 
 interface ScheduleScreenProps {
@@ -8,29 +8,18 @@ interface ScheduleScreenProps {
   onGoToPlace: (placeId: string) => void
 }
 
-const typeLabel: Record<string, string> = {
-  registration: 'Registration',
-  keynote: 'Keynote',
-  session: 'Session',
-  break: 'Break',
-  quiz: 'Quiz',
-  social: 'Social',
-}
-
 export function ScheduleScreen({ onNavigate, onGoToPlace }: ScheduleScreenProps) {
   const [dayId, setDayId] = useState<EventDayId>('workshop')
   const day = EVENT_DAYS.find((d) => d.id === dayId) ?? EVENT_DAYS[0]
   const items = useMemo(() => scheduleForDay(dayId), [dayId])
 
+  const officialPdf =
+    dayId === 'day1' ? LINKS.day1Pdf : dayId === 'day2' ? LINKS.day2Pdf : null
+
   return (
     <div className="app-screen">
-      <Header
-        title="Programme"
-        subtitle={`${EVENT_META.dateLabel} · Companion demo`}
-        onBack={() => onNavigate('home')}
-      />
+      <Header title="Programme" subtitle={EVENT_META.dateLabel} onBack={() => onNavigate('home')} />
 
-      {/* Day switcher */}
       <div className="shrink-0 px-3 pt-2 pb-2 border-b border-border bg-surface-elevated">
         <div className="flex gap-1.5">
           {EVENT_DAYS.map((d) => {
@@ -40,7 +29,7 @@ export function ScheduleScreen({ onNavigate, onGoToPlace }: ScheduleScreenProps)
                 key={d.id}
                 type="button"
                 onClick={() => setDayId(d.id)}
-                className={`flex-1 rounded-xl py-2 px-1 text-center border transition-colors ${
+                className={`flex-1 rounded-xl py-2 px-1 text-center border ${
                   active
                     ? 'bg-brand text-white border-brand'
                     : 'bg-surface border-border text-ink-muted'
@@ -56,17 +45,54 @@ export function ScheduleScreen({ onNavigate, onGoToPlace }: ScheduleScreenProps)
             )
           })}
         </div>
-        <p className="mt-2 text-[11px] text-ink-muted leading-snug">
+        <p className="mt-2 text-[11px] text-ink-muted">
           <span className="font-bold text-ink">{day.venue}</span>
-          {day.note ? ` · ${day.note}` : ''}
         </p>
       </div>
 
       <div className="scroll-area px-3 py-3 space-y-2">
-        {!day.hasIndoorNav && (
-          <div className="rounded-xl border border-border bg-surface px-3 py-2 text-xs text-ink-muted">
-            Indoor map is for the JNMC workshop day only. Lemon Tree sessions show venue areas —
-            no indoor navigation.
+        {officialPdf && (
+          <div className="rounded-2xl border border-border bg-surface-elevated p-4 space-y-3">
+            <p className="text-sm text-ink leading-snug">
+              Full scientific programme is on the official PDF.
+            </p>
+            <a
+              href={officialPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center rounded-xl bg-brand text-white font-bold text-sm py-3"
+            >
+              Open Day {dayId === 'day1' ? '1' : '2'} programme (PDF)
+            </a>
+            <a
+              href={LINKS.program}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center text-sm font-bold text-maroon py-1"
+            >
+              Programme on website
+            </a>
+          </div>
+        )}
+
+        {dayId === 'workshop' && (
+          <div className="flex gap-2">
+            <a
+              href={LINKS.workshops}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center rounded-xl border border-border bg-surface-elevated py-2 text-xs font-bold text-brand"
+            >
+              Workshops (site)
+            </a>
+            <a
+              href={LINKS.brochure}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 text-center rounded-xl border border-border bg-surface-elevated py-2 text-xs font-bold text-brand"
+            >
+              Brochure
+            </a>
           </div>
         )}
 
@@ -75,13 +101,8 @@ export function ScheduleScreen({ onNavigate, onGoToPlace }: ScheduleScreenProps)
             key={item.id}
             className="rounded-2xl bg-surface-elevated border border-border p-3.5"
           >
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-xs font-bold text-brand tracking-wide">{item.time}</p>
-              <span className="text-[10px] font-bold uppercase tracking-wide text-ink-muted bg-surface border border-border rounded-full px-2 py-0.5 shrink-0">
-                {typeLabel[item.type] ?? item.type}
-              </span>
-            </div>
-            <h3 className="font-display text-sm font-bold text-ink mt-1 leading-snug">
+            <p className="text-xs font-bold text-brand tracking-wide">{item.time}</p>
+            <h3 className="font-display text-sm font-bold text-ink mt-0.5 leading-snug">
               {item.title}
             </h3>
             {item.speaker && (
@@ -93,7 +114,7 @@ export function ScheduleScreen({ onNavigate, onGoToPlace }: ScheduleScreenProps)
                 <button
                   type="button"
                   onClick={() => onGoToPlace(item.placeId!)}
-                  className="shrink-0 text-xs font-bold text-maroon rounded-lg px-2 py-1 hover:bg-brand/5"
+                  className="shrink-0 text-xs font-bold text-maroon rounded-lg px-2 py-1"
                 >
                   Map
                 </button>

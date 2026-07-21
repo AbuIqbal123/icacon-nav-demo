@@ -42,7 +42,7 @@ const ROOMS_BY_FLOOR: Record<FloorId, RoomHit[]> = {
   ],
   second: [
     { placeId: 'workshop-101', x: 44, y: 94, w: 98, h: 76, label: 'POCUS' },
-    { placeId: 'room-205', x: 148, y: 94, w: 48, h: 52, label: 'Room 205' },
+    { placeId: 'room-205', x: 148, y: 94, w: 48, h: 52, label: 'USG Blocks' },
     { placeId: 'workshop-hall-a', x: 44, y: 242, w: 108, h: 76, label: 'Adv. Airway' },
     { placeId: 'anaesth-theatre', x: 250, y: 84, w: 108, h: 86, label: 'Mech. Vent' },
     { placeId: 'main-auditorium', x: 250, y: 232, w: 108, h: 86, label: 'Auditorium' },

@@ -1,10 +1,23 @@
 import { ChevronRight, Compass, MapPin } from 'lucide-react'
 import { Logo } from '../components/Logo'
-import { EVENT_META, WORKSHOPS } from '../data/events'
+import { EVENT_META, LINKS, WORKSHOPS } from '../data/events'
 import type { Screen } from '../types'
 
 interface HomeScreenProps {
   onNavigate: (s: Screen) => void
+}
+
+function ExternalLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex-1 min-w-0 rounded-xl border border-border bg-surface-elevated py-2.5 px-2 text-center text-xs font-bold text-brand active:bg-brand/5"
+    >
+      {children}
+    </a>
+  )
 }
 
 export function HomeScreen({ onNavigate }: HomeScreenProps) {
@@ -27,11 +40,8 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           <p className="mt-4 text-sm font-bold text-gold-soft tracking-wide uppercase">
             Indian College of Anaesthesiologists
           </p>
-          <p className="mt-2 text-xs text-white/85 leading-snug">
+          <p className="mt-2 text-xs text-white/85 leading-snug line-clamp-2">
             {EVENT_META.theme}
-          </p>
-          <p className="mt-2 text-sm text-white/90 leading-relaxed">
-            Companion demo · Workshops at JNMC · Conference at Lemon Tree
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-1 text-xs font-bold bg-black/15 rounded-full px-3 py-1">
@@ -56,21 +66,29 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
             <span className="flex-1 min-w-0">
               <span className="block font-display font-bold text-ink">JNMC Navigation</span>
               <span className="block text-xs text-ink-muted mt-0.5">
-                Indoor map for workshop day only
+                Workshop day indoor map
               </span>
             </span>
             <ChevronRight className="text-brand shrink-0" size={20} />
           </button>
 
+          <div className="flex gap-2">
+            <ExternalLink href={LINKS.website}>Website</ExternalLink>
+            <ExternalLink href={LINKS.brochure}>Brochure</ExternalLink>
+            <ExternalLink href={LINKS.register}>Register</ExternalLink>
+          </div>
+
           <section className="rounded-2xl bg-surface-elevated border border-border p-3.5">
             <p className="text-[10px] font-bold uppercase tracking-widest text-brand mb-2">
               Workshops · 11 Sept · JNMC
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-1.5">
               {WORKSHOPS.map((w) => (
                 <li key={w.id} className="text-sm">
                   <span className="font-bold text-ink">{w.title}</span>
-                  <span className="block text-xs text-ink-muted">{w.director}</span>
+                  {w.director && (
+                    <span className="block text-xs text-ink-muted">{w.director}</span>
+                  )}
                 </li>
               ))}
             </ul>
@@ -84,24 +102,20 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
               [
                 { id: 'schedule' as Screen, title: 'Programme', desc: 'All 3 days' },
                 { id: 'navigate' as Screen, title: 'Navigate', desc: 'JNMC map' },
-                { id: 'offline' as Screen, title: 'Info & contacts', desc: 'Secretariat' },
+                { id: 'offline' as Screen, title: 'Info', desc: 'Links & contacts' },
               ] as const
             ).map((item) => (
               <button
                 key={item.title}
                 type="button"
                 onClick={() => onNavigate(item.id)}
-                className="rounded-2xl bg-surface-elevated border border-border p-3.5 text-left hover:border-brand/40 transition-colors"
+                className="rounded-2xl bg-surface-elevated border border-border p-3.5 text-left"
               >
                 <span className="block font-display font-bold text-sm text-ink">{item.title}</span>
                 <span className="block text-xs text-ink-muted mt-0.5">{item.desc}</span>
               </button>
             ))}
           </div>
-
-          <p className="text-center text-[11px] text-ink-muted px-2">
-            Organised by {EVENT_META.organisedBy}
-          </p>
         </div>
       </div>
     </div>

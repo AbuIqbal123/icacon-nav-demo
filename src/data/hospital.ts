@@ -214,13 +214,14 @@ export const PLACES: Place[] = [
   },
   {
     id: 'room-205',
-    name: 'Room 205',
-    shortName: 'Room 205',
+    name: 'USG Regional Nerve Blocks Workshop',
+    shortName: 'USG Blocks',
     floor: 'second',
     category: 'workshop',
     position: { x: 172, y: 120 },
-    description: 'Breakout room',
-    tags: ['room 205'],
+    description: 'Ultrasound guided regional nerve blocks',
+    tags: ['room 205', 'workshop', 'regional', 'nerve', 'blocks', 'ultrasound'],
+    isQuickAccess: true,
   },
   {
     id: 'lifts-2',

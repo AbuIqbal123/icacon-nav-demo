@@ -1,8 +1,10 @@
-# ICACON Navigator (Demo)
+# ICACON 2026 Companion (Demo)
 
-Simple indoor navigation prototype for **ICACON 2026** workshop day at JNMC, AMU Aligarh.
+Mobile companion demo for **ICACON 2026** (Aligarh).
 
-Design cues from [icaconaligarh.com](https://www.icaconaligarh.com) (navy `#193775`, cyan `#00abc9`, maroon accents).
+- **Live:** https://icacon-nav-demo.vercel.app  
+- **Site:** https://www.icaconaligarh.com  
+- **Brochure:** `/brochure.pdf` (also [online](https://www.icaconaligarh.com/pdf/brochure.pdf))
 
 ## Run
 
@@ -11,10 +13,11 @@ npm install
 npm run dev
 ```
 
-## What’s included
+## Screens
 
-- **Home** — event entry + links
-- **Navigate** — From / To, floor map, dotted route, directions list
-- **Schedule / My Agenda / Offline Info** — light placeholder content
+- **Home** — branding, 5 workshops, Website / Brochure / Register  
+- **Navigate** — JNMC indoor map (workshop day only)  
+- **Programme** — 11 Sept workshops + Map; 12–13 Sept official Day 1/2 PDFs  
+- **Info** — official links, secretariat, registration contact  
 
-No live walking simulation, no backend — client-side only.
+Static client-side demo — no backend.
