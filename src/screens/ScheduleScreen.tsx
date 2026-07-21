@@ -64,14 +64,6 @@ export function ScheduleScreen({ onNavigate, onGoToPlace }: ScheduleScreenProps)
             >
               Open Day {dayId === 'day1' ? '1' : '2'} programme (PDF)
             </a>
-            <a
-              href={LINKS.program}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center text-sm font-bold text-maroon py-1"
-            >
-              Programme on website
-            </a>
           </div>
         )}
 

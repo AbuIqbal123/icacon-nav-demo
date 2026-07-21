@@ -36,7 +36,6 @@ export function OfflineScreen({ onNavigate }: OfflineScreenProps) {
           <LinkRow href={LINKS.brochure} label="Brochure (PDF)" />
           <LinkRow href={LINKS.register} label="Register" />
           <LinkRow href={LINKS.workshops} label="Workshops" />
-          <LinkRow href={LINKS.program} label="Programme" />
           <LinkRow href={LINKS.day1Pdf} label="Day 1 programme (PDF)" />
           <LinkRow href={LINKS.day2Pdf} label="Day 2 programme (PDF)" />
           <LinkRow href={LINKS.venue} label="Venue" />
