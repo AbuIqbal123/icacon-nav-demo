@@ -15,6 +15,7 @@ Use this before submitting. The app is an offline-first conference companion wit
 - [x] `allowBackup: false` on Android
 - [x] Portrait-only, iPhone-only (no iPad layout required yet)
 - [x] Dead Expo template code removed
+- [x] No analytics / tracking SDKs (Vexo removed; privacy story matches binary)
 - [x] Version `1.0.0` / iOS build `1` / Android `versionCode` `1`
 
 ## You must complete before submit
@@ -63,7 +64,16 @@ eas build --profile production --platform android   # AAB
 eas build --profile production --platform ios       # IPA
 ```
 
-Preview installs for QA:
+Development builds (native app + hot reload; not for store):
+
+```bash
+eas build --profile development --platform android
+eas build --profile development --platform ios
+eas build --profile development-simulator --platform ios   # Mac Simulator only
+npx expo start --dev-client
+```
+
+Preview installs for QA (standalone, no dev menu):
 
 ```bash
 eas build --profile preview --platform android

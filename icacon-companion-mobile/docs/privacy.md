@@ -13,9 +13,10 @@ ICACON 2026 Companion is a free event information app for the ICACON 2026 confer
 **We do not collect personal data.**
 
 - No account or profile  
-- No analytics or advertising SDKs in version 1.0  
-- No tracking across apps or websites  
+- No analytics, crash-reporting, or advertising SDKs  
+- No third-party tracking across apps or websites  
 - No sale of data  
+- The app does not phone home; conference content is bundled on device
 
 ## Information on your device
 
