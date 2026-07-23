@@ -36,10 +36,8 @@ export const EVENT_META = {
 
 /** Google Maps deep links (opens app or browser) */
 export const VENUE_MAPS = {
-  jnmc:
-    'https://www.google.com/maps/search/?api=1&query=Jawaharlal+Nehru+Medical+College+AMU+Aligarh',
-  lemonTree:
-    'https://www.google.com/maps/search/?api=1&query=Lemon+Tree+Hotel+Aligarh',
+  jnmc: 'https://maps.app.goo.gl/uXS29KWGHc5QdaB66',
+  lemonTree: 'https://maps.app.goo.gl/TzJznfYVW3rAj5Y6A',
 } as const
 
 export const EVENT_DAYS: EventDay[] = [

@@ -1,16 +1,35 @@
 import { Tabs } from 'expo-router'
 import { Calendar, Compass, Home, Info } from 'lucide-react-native'
+import { Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { colors } from '@/src/theme/colors'
 
-export default function TabLayout() {
+/**
+ * Space above Android system nav (Samsung 3-button / gesture bar).
+ * Edge-to-edge draws the app under those buttons; without this pad the
+ * tab icons sit under Home/Back/Recents.
+ *
+ * Prefer the real inset. On some Samsung devices insets.bottom is 0 even
+ * when the system bar overlays — fall back to ~48dp (standard 3-button height).
+ */
+function useTabBarBottomInset() {
   const insets = useSafeAreaInsets()
-  // Home-indicator devices need ~34pt; Android / older iPhones still get a little lift
-  const bottomPad = Math.max(insets.bottom, 10)
-  const tabBarHeight = 52 + bottomPad
+  if (insets.bottom > 0) return insets.bottom
+  if (Platform.OS === 'android') return 48
+  return 10
+}
+
+export default function TabLayout() {
+  const bottomPad = useTabBarBottomInset()
+  // Icon + label row; bottomPad is reserved for the system nav only
+  const contentHeight = 56
+  const tabBarHeight = contentHeight + bottomPad
 
   return (
     <Tabs
+      // Drive the bar's own safe-area math from our resolved inset so we
+      // never double-count or get a 0 inset on edge-to-edge Android.
+      safeAreaInsets={{ bottom: bottomPad }}
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.brand,
@@ -20,7 +39,7 @@ export default function TabLayout() {
           borderTopColor: colors.border,
           height: tabBarHeight,
           paddingBottom: bottomPad,
-          paddingTop: 8,
+          paddingTop: 6,
         },
         tabBarItemStyle: {
           paddingTop: 2,

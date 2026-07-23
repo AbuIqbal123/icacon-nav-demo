@@ -12,7 +12,7 @@ const VALID: PdfId[] = ['brochure', 'day1', 'day2']
 
 /**
  * iOS WebView can preview local PDFs. Android WebView often cannot —
- * we lead with the system viewer / share sheet there.
+ * we open with ACTION_VIEW (system PDF apps) and keep this screen as fallback UI.
  */
 export default function PdfScreen() {
   const { id } = useLocalSearchParams<{ id: string }>()
@@ -32,7 +32,7 @@ export default function PdfScreen() {
         return
       }
       setUri(resolved)
-      // Android: open system viewer immediately; keep screen as fallback UI
+      // Android: open system PDF viewer immediately; keep screen as fallback UI
       if (preferSystemViewer) {
         await openBundledPdf(pdfId)
       }
