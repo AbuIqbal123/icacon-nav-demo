@@ -1,8 +1,8 @@
-# Store listing draft — ICACON 2026
+# Store listing draft — ICACON 2026 Companion
 
 ## App name
 
-ICACON 2026
+ICACON 2026 Companion
 
 ## Subtitle / short description (Android ≤80 chars)
 

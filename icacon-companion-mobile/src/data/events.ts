@@ -18,6 +18,7 @@ export const LINKS = {
 
 export const EVENT_META = {
   name: 'ICACON 2026',
+  appName: 'ICACON 2026 Companion',
   fullName:
     '7th International & 17th National Conference of the Indian College of Anaesthesiologists',
   subtitle: 'Event companion · Aligarh',
@@ -122,6 +123,7 @@ export const WORKSHOPS: Workshop[] = [
   {
     id: 'blocks',
     title: 'Ultrasound Guided Regional Nerve Blocks',
+    director: 'Dr. Md Ishtiyaque Hussain',
     fee: '₹4,000',
     placeId: 'room-205',
   },

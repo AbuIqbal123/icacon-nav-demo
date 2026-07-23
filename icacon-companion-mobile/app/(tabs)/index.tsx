@@ -102,7 +102,7 @@ export default function HomeScreen() {
             </View>
             <View style={styles.navCopy}>
               <Text style={styles.navTitle}>Info</Text>
-              <Text style={styles.navSub}>Contacts, hosts & resources</Text>
+              <Text style={styles.navSub}>Contacts, participants & resources</Text>
             </View>
             <ChevronRight size={20} color={colors.inkMuted} />
           </Pressable>

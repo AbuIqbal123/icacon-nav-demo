@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ICACON 2026",
+    "name": "ICACON 2026 Companion",
     "slug": "icacon-companion-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,7 +16,7 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "LSApplicationQueriesSchemes": ["tel", "mailto", "https", "http", "maps"],
-        "CFBundleDisplayName": "ICACON 2026"
+        "CFBundleDisplayName": "ICACON 2026 Companion"
       },
       "privacyManifests": {
         "NSPrivacyAccessedAPITypes": [],
