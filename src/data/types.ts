@@ -2,7 +2,7 @@ export type EventDayId = 'workshop' | 'day1' | 'day2'
 
 /** Dual map links so users can open Apple Maps or Google Maps. */
 export interface MapLinks {
-  /** Google Maps place / short link */
+  /** Google Maps place URL */
   googleMapsUrl: string
   /** maps.apple.com URL — opens native Apple Maps on iOS */
   appleMapsUrl: string

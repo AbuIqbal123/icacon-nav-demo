@@ -46,16 +46,18 @@ export const EVENT_META = {
 const JNMC_APPLE_MAPS = 'https://maps.apple/p/uDCXH~0AJ1dAwy'
 
 /**
- * Venue map destinations — Google short links + Apple Maps place links / queries.
+ * Venue map destinations — Google Maps place links + Apple Maps place links.
  * iOS shows a chooser so users can open native Apple Maps (App Store guideline 4).
  */
 export const VENUE_MAPS = {
   jnmc: {
-    googleMapsUrl: 'https://maps.app.goo.gl/uXS29KWGHc5QdaB66',
+    googleMapsUrl:
+      'https://www.google.com/maps/place/Jawaharlal+Nehru+Medical+College,+AMU/@27.9186868,78.088435,17z/data=!4m6!3m5!1s0x3974a4e0f6b6118f:0x81191b8caed27551!8m2!3d27.9186868!4d78.088435!16s%2Fg%2F11bc5cc12l?hl=en',
     appleMapsUrl: JNMC_APPLE_MAPS,
   },
   lemonTree: {
-    googleMapsUrl: 'https://maps.app.goo.gl/TzJznfYVW3rAj5Y6A',
+    googleMapsUrl:
+      'https://www.google.com/maps?q=Lemon+Tree+Hotel,+Aligarh,+Plot+No:B/11,+Marris+Rd,+opp.+Pragati+Vihar+Colony,+Aligarh,+Uttar+Pradesh+202001,+India&ftid=0x3974a50066650bed:0xfb61bc046d6c69d3&hl=en',
     appleMapsUrl: 'https://maps.apple/p/Zqtc1DTSCdjmpJ',
   },
 } as const satisfies Record<string, MapLinks>
@@ -102,19 +104,22 @@ export const WORKSHOP_DAY = {
 
 /** Airway, Ventilation, Obstetrics — Paramedical College. */
 export const WORKSHOP_VENUE_MAPS = {
-  googleMapsUrl: 'https://maps.app.goo.gl/BWgH6jRMjLnwkysM6',
+  googleMapsUrl:
+    'https://www.google.com/maps?q=W3CQ+4F+Paramedical+College,+AMU,+Aligarh,+Uttar+Pradesh+202001,+India&ftid=0x3974a59324f6c0bb:0x1745afefe1f3faf5&hl=en',
   appleMapsUrl: JNMC_APPLE_MAPS,
 } as const satisfies MapLinks
 
 /** POCUS — Simulation Lab (Old OPD Complex, near ART Centre), JNMC. */
 export const SIMULATION_LAB_MAPS = {
-  googleMapsUrl: 'https://maps.app.goo.gl/5o6osyGMvjkY4cfW9?g_st=ic',
+  googleMapsUrl:
+    'https://www.google.com/maps?q=W39P+5FC+Anti+Retroviral+Therapy+Centre,+jnmc+amu,+Aligarh,+Uttar+Pradesh+202001,+India&ftid=0x3974a505ac2a6a2d:0x898a1871fe2e8f65&hl=en',
   appleMapsUrl: JNMC_APPLE_MAPS,
 } as const satisfies MapLinks
 
 /** USG Regional — Surgery OT Complex (near Dept of Anaesthesia). */
 export const USG_REGIONAL_MAPS = {
-  googleMapsUrl: 'https://maps.app.goo.gl/2kF68afduK8JVnHq7?g_st=ic',
+  googleMapsUrl:
+    'https://www.google.com/maps?q=W39P+CP8+Department+of+Anaesthesiology,+JNMCH+AMU,+Aligarh,+Uttar+Pradesh+202001,+India&ftid=0x3974a591a024317d:0xb279db9852865dbb&hl=en',
   appleMapsUrl: JNMC_APPLE_MAPS,
 } as const satisfies MapLinks
 
